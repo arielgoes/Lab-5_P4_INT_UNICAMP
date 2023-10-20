@@ -18,7 +18,7 @@ def handle_pkt(pkt):
             print("Switch {} - Port {}: {} Mbps".format(sw.swid, sw.port, utilization))
 
 def main():
-    iface = 'eth0'
+    iface = 'h2-eth0'
     print("sniffing on {}".format(iface))
     sniff(iface = iface,
           prn = lambda x: handle_pkt(x))
