@@ -10,8 +10,12 @@ def expand(x):
         yield x
 
 def handle_pkt(pkt):
+    for l in expand(pkt):
+            print("layer: ", l)
+    
     if ProbeData in pkt:
         data_layers = [l for l in expand(pkt) if l.name=='ProbeData']
+        #print("data_layers: ", data_layers)
         print("")
         for sw in data_layers:
             utilization = 0 if sw.cur_time == sw.last_time else 8.0*sw.byte_cnt/(sw.cur_time - sw.last_time)
